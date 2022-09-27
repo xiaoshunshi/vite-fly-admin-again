@@ -4,42 +4,6 @@ module.exports = {
     es2021: true,
     node: true
   },
-  globals: {
-    $: 'readonly',
-    $$: 'readonly',
-    $ref: 'readonly',
-    $shallowRef: 'readonly',
-    $computed: 'readonly',
-    Fn: 'readonly',
-    PromiseFn: 'readonly',
-    RefType: 'readonly',
-    LabelValueOptions: 'readonly',
-    EmitType: 'readonly',
-    TargetContext: 'readonly',
-    ComponentElRef: 'readonly',
-    ComponentRef: 'readonly',
-    ElRef: 'readonly',
-    global: 'readonly',
-    ForDataType: 'readonly',
-    ComponentRoutes: 'readonly',
-    Recordable: 'readonly',
-    // CanvasTextBaseline: "readonly",
-    // NodeJS: "readonly",
-
-    // script setup
-    defineOptions: 'readonly',
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineExpose: 'readonly',
-    withDefaults: 'readonly',
-
-    document: 'readonly',
-    localStorage: 'readonly',
-    baiduMap: 'readonly',
-    window: 'readonly',
-    // 腾讯地图
-    TMap: 'readonly'
-  },
   extends: [
     // 'plugin:vue/essential',
     // 使用 vue3 规则
