@@ -2,14 +2,14 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import eslintPlugin from 'vite-plugin-eslint'
-const resolve = ( dir: string ) => path.join( __dirname, dir )
+const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config/
-export default defineConfig( {
+export default defineConfig({
   plugins: [
     vue(),
-    eslintPlugin( {
+    eslintPlugin({
       cache: false
-    } )
+    })
   ],
   css: {
     preprocessorOptions: {
@@ -20,7 +20,7 @@ export default defineConfig( {
   },
   resolve: {
     alias: {
-      '@': resolve( 'src' )
+      '@': resolve('src')
     },
     // 忽略后缀名的配置选项, 添加 .vue 选项时要记得原本默认忽略的选项也要手动写入
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
@@ -40,8 +40,8 @@ export default defineConfig( {
       '/api': {
         target: 'https://www.fastmock.site/mock/935974cbe8285109b2162d84b5d52c3c/api',
         changeOrigin: true,
-        rewrite: path => path.replace( /^\/api/, '' )
+        rewrite: path => path.replace(/^\/api/, '')
       }
     }
   }
-} )
+})
