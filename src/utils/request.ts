@@ -46,9 +46,9 @@ class HttpRequest {
 
   //  post 使用 data
   //  get 使用   params
-  getParams( payload:any ) {
+  getParams(payload:any) {
     const { method, data } = payload
-    if ( ['post', 'put', 'patch', 'delete'].indexOf( method ) >= 0 ) {
+    if (['post', 'put', 'patch', 'delete'].indexOf(method) >= 0) {
       payload.data = data
     } else {
       payload.params = data
@@ -58,22 +58,22 @@ class HttpRequest {
   }
 
   //   设置拦截
-  setInterceptors( instance:AxiosInstance ) {
-    instance.interceptors.request.use( ( config:AxiosRequestConfig ) => {
-      if ( !navigator.onLine ) {
-        ElMessage( {
+  setInterceptors(instance:AxiosInstance) {
+    instance.interceptors.request.use((config:AxiosRequestConfig) => {
+      if (!navigator.onLine) {
+        ElMessage({
           message: '请检查您的网络是否正常',
           type: 'error',
           duration: 3 * 1000
-        } )
-        return Promise.reject( new Error( '请检查您的网络是否正常' ) )
+        })
+        return Promise.reject(new Error('请检查您的网络是否正常'))
       }
 
       // const token = cookies.get(TOKEN)
       return config
-    } )
-    instance.interceptors.response.use( ( res:AxiosRequestConfig ) => {
-      console.log( res )
+    })
+    instance.interceptors.response.use((res:AxiosRequestConfig) => {
+      console.log(res)
       //       config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 86400000, adapter: ƒ, …}
       // data: {code: 200, data: {…}, msg: 'success'}
       // headers: {access-control-allow-credentials: 'true', access-control-allow-origin: 'http://localhost:3088', connection: 'close', content-length: '103', content-type: 'application/json; charset=utf-8', …}
@@ -83,25 +83,25 @@ class HttpRequest {
       const ressult = res.data
       const { code, msg } = ressult
 
-      if ( code === 200 ) {
+      if (code === 200) {
         return ressult
       } else {
-        ElMessage( {
+        ElMessage({
           message: msg || 'Error',
           type: 'error',
           duration: 3 * 1000
-        } )
-        return Promise.reject( new Error( msg || 'Error' ) )
+        })
+        return Promise.reject(new Error(msg || 'Error'))
       }
-    } )
+    })
   }
 
-  request( options:optionsType ) {
+  request(options:optionsType) {
     const instance = axios.create()
     const baseOpt = this.getConfig()
-    const params = Object.assign( {}, baseOpt, this.getParams( options ) )
-    this.setInterceptors( instance )
-    return instance( params )
+    const params = Object.assign({}, baseOpt, this.getParams(options))
+    this.setInterceptors(instance)
+    return instance(params)
   }
 }
 

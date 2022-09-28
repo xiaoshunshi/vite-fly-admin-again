@@ -236,7 +236,7 @@ module.exports = {
     }],
     'space-before-blocks': [2, 'always'],
     'space-before-function-paren': [2, 'never'],
-    'space-in-parens': [2, 'always'],
+    // 'space-in-parens': [2, 'always']
     'space-infix-ops': 2,
     'space-unary-ops': [2, {
       words: true,
