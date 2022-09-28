@@ -6,7 +6,6 @@ import App from './App.vue'
 
 const app = createApp(App)
 // 设置路由拦截
-console.log(aa)
 app.use(ElementPlus)
 app.use(router)
 app.mount('#app')
