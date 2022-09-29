@@ -256,7 +256,11 @@ module.exports = {
     'object-curly-spacing': [2, 'always', {
       objectsInObjects: false
     }],
-    'array-bracket-spacing': [2, 'never']
+    'array-bracket-spacing': [2, 'never'],
+    // Promise executor functions should not be async.
+    'no-async-promise-executor': 'off',
+    'no-misleading-character-class': 'off',
+    'no-useless-catch': 'off'
 
   }
 }
