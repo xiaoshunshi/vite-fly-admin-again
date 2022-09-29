@@ -236,7 +236,7 @@ module.exports = {
     }],
     'space-before-blocks': [2, 'always'],
     'space-before-function-paren': [2, 'never'],
-    'space-in-parens': [2, 'always'],
+    // 'space-in-parens': [2, 'always'],
     'space-infix-ops': 2,
     'space-unary-ops': [2, {
       words: true,
@@ -256,7 +256,11 @@ module.exports = {
     'object-curly-spacing': [2, 'always', {
       objectsInObjects: false
     }],
-    'array-bracket-spacing': [2, 'never']
+    'array-bracket-spacing': [2, 'never'],
+    // Promise executor functions should not be async.
+    'no-async-promise-executor': 'off',
+    'no-misleading-character-class': 'off',
+    'no-useless-catch': 'off'
 
   }
 }

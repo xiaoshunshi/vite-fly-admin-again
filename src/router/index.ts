@@ -14,7 +14,7 @@ export const constantRoutes :Array<RouteRecordRaw & extendRoute> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import( '@/views/login/index.vue' ),
+    component: () => import('@/views/login/index.vue'),
     hidden: true,
     meta: { title: '登录' }
   },
@@ -26,7 +26,7 @@ export const constantRoutes :Array<RouteRecordRaw & extendRoute> = [
     children: [
       {
         path: '/home',
-        component: () => import( '@/views/home/index.vue' ),
+        component: () => import('@/views/home/index.vue'),
         name: 'home',
         meta: { title: '首页', icon: 'film', affix: true, role: ['other'] }
       }
@@ -50,11 +50,11 @@ export const constantRoutes :Array<RouteRecordRaw & extendRoute> = [
 //   }
 // ]
 
-const router = createRouter( {
-  history: createWebHashHistory( ),
+const router = createRouter({
+  history: createWebHashHistory(),
   routes: constantRoutes,
-  scrollBehavior: () => ( { left: 0, top: 0 } )
-} )
+  scrollBehavior: () => ({ left: 0, top: 0 })
+})
 
 export default router
 
