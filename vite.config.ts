@@ -7,12 +7,19 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // 项目中使用mock
 import { viteMockServe } from 'vite-plugin-mock'
 import { isMock } from './mock/config'
+// 打包分析
+import { visualizer } from 'rollup-plugin-visualizer'
 console.log(isMock)
 const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    visualizer({
+      open: true, // 注意这里要设置为true，否则无效
+      gzipSize: true,
+      brotliSize: true
+    }),
     viteMockServe({
       mockPath: 'mock', // 解析，路径可根据实际变动
       localEnabled: isMock, // 开发环境

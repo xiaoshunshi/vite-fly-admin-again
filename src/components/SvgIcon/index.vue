@@ -12,7 +12,7 @@ export default {
     iconClass: { type: String },
     className: { type: String }
   },
-  setup(props) {
+  setup(props:any) {
     const iconName = computed(() => {
       return props.iconClass ? `#icon-${props.iconClass}` : '#icon'
     })
