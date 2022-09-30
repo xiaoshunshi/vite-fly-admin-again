@@ -6,10 +6,14 @@ import App from './App.vue'
 import pinia from './store'
 // 注册icon组件
 import * as ElIconsModules from '@element-plus/icons-vue'
+// svg-icons注册导入
+import 'virtual:svg-icons-register'
+import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
 
 const app = createApp(App)
 
 app.use(ElementPlus)
+app.component('SvgIcon', SvgIcon)
 // 全局注册element-plus icon图标组件
 Object.keys(ElIconsModules).forEach((key) => {
   // 循环遍历组件名称

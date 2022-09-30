@@ -3,7 +3,9 @@
   <div class="login-container">
     <div class="login-box">
       <!--登录功能-->
-      <div style="color: white; text-align: center; margin-bottom: 15px">登录系统-密码账号随便填 admin admin</div>
+      <div style="color: white; text-align: center; margin-bottom: 15px">
+        登录系统
+      </div>
       <div class="login-box-content-right">
         <!--login-Form-->
         <el-form
@@ -23,7 +25,9 @@
               @keyup.enter="submitForm(ruleFormRef)"
             >
               <template #prefix>
-                <el-icon class="el-input__icon"><UserFilled /></el-icon>
+                <el-icon class="el-input__icon">
+                  <UserFilled />
+                </el-icon>
               </template>
             </el-input>
           </el-form-item>
@@ -36,22 +40,19 @@
               :type="passwordType"
             >
               <template #prefix>
-                <el-icon class="el-input__icon"><GoodsFilled /></el-icon>
+                <el-icon class="el-input__icon">
+                  <GoodsFilled />
+                </el-icon>
               </template>
               <template #suffix>
-                <div
-                  class="show-pwd"
-                  @click="showPwd"
-                ><svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" /></div>
+                <div class="show-pwd" @click="showPwd">
+                  <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+                </div>
               </template>
             </el-input>
           </el-form-item>
           <el-form-item style="width: 100%">
-            <el-button
-              type="primary"
-              @click="submitForm(ruleFormRef)"
-              style="width: 100%; height: 47px"
-            >登录</el-button>
+            <el-button type="primary" @click="submitForm(ruleFormRef)" style="width: 100%; height: 47px">登录</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -129,5 +130,5 @@ const submitForm = (formEl: FormInstance | undefined) => {
 }
 </script>
 <style lang="scss" scoped>
-  @import "./index";
+@import "./index";
 </style>
