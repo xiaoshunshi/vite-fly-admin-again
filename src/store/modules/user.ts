@@ -21,7 +21,9 @@ export const useUserStore = defineStore({
   actions: {
     // 登录
     async login(userInfo:any) {
-      await login(userInfo)
+      const { data } = await login(userInfo)
+      const { token } = data
+      this.setToken(token)
       // const { username } = userInfo
       // return new Promise(async(resolve) => {
       //   this.token = username
@@ -29,6 +31,9 @@ export const useUserStore = defineStore({
       //   await this.getRoles()
       //   resolve(username)
       // })
+    },
+    setToken(token:string) {
+      console.log(token)
     },
     // 获取用户授权角色信息，实际应用中 可以通过token通过请求接口在这里获取用户信息
     getRoles() {

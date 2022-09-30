@@ -57,7 +57,7 @@ export default [
         code: 200,
         message: 'success',
         data: {
-          token: 'token'
+          token: '9ce3b6ed-332f-7C48-241b-eD6583E33B3A'
         }
       }
     }
