@@ -10,8 +10,8 @@ type mapType = {
   roles: string[];
 }
 
-const userInfo = () : mapType => {
-  const result : mapType = {
+const userInfo = (): mapType => {
+  const result: mapType = {
     id: 9527,
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: '灰是小灰灰的灰',
@@ -22,11 +22,18 @@ const userInfo = () : mapType => {
   }
   return result
 }
+type result = {
+  id: string;
+  method: number;
+  deviceType: string;
+  deviceOs: string;
+  loginAddr: string;
+  loginTime: string;
+}
 
 const list = () => {
-  const result:any[] = []
-  // const total : number = 10000 * 10
-  const total : number = 10000 * 0.01
+  const result: result[] = []
+  const total: number = 10000 * 0.01
   for (let i = 1; i <= total; i++) {
     const item = {
       id: '@increment',

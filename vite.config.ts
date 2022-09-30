@@ -7,6 +7,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // 项目中使用mock
 import { viteMockServe } from 'vite-plugin-mock'
 import { isMock } from './mock/config'
+console.log(isMock)
 const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config/
 export default defineConfig({
