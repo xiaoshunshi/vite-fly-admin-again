@@ -4,11 +4,25 @@ import path from 'path'
 import eslintPlugin from 'vite-plugin-eslint'
 // 引入svg的icon
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+// 项目中使用mock
+import { viteMockServe } from 'vite-plugin-mock'
+import { isMock } from './mock/config'
 const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    viteMockServe({
+      mockPath: 'mock', // 解析，路径可根据实际变动
+      localEnabled: isMock, // 开发环境
+      prodEnabled: false, // 生产环境设为true，也可以根据官方文档格式
+      injectCode:
+      ` import { setupProdMockServer } from './src/mock';
+        setupProdMockServer(); `,
+      watchFiles: true, // 监听文件内容变更
+      injectFile: resolve('src/main.ts')
+    }
+    ),
     eslintPlugin({
       cache: false
     }),
