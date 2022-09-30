@@ -11,7 +11,6 @@ import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
 
 const app = createApp(App)
-
 app.use(ElementPlus)
 app.component('SvgIcon', SvgIcon)
 // 全局注册element-plus icon图标组件

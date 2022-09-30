@@ -23,11 +23,9 @@ class HttpRequest {
   //   获取baseurl
   getBaseUrl():string {
     const { envStr } = getEnvs()
-
     const baseUrlStr = envStr === 'dev'
       ? import.meta.env.VITE_PROXY_DOMAIN
       : ''
-
     return baseUrlStr
   }
 
@@ -68,12 +66,9 @@ class HttpRequest {
         })
         return Promise.reject(new Error('请检查您的网络是否正常'))
       }
-
-      // const token = cookies.get(TOKEN)
       return config
     })
     instance.interceptors.response.use((res:AxiosRequestConfig) => {
-      console.log(res)
       //       config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 86400000, adapter: ƒ, …}
       // data: {code: 200, data: {…}, msg: 'success'}
       // headers: {access-control-allow-credentials: 'true', access-control-allow-origin: 'http://localhost:3088', connection: 'close', content-length: '103', content-type: 'application/json; charset=utf-8', …}
@@ -82,7 +77,6 @@ class HttpRequest {
       // statusText: "OK"
       const ressult = res.data
       const { code, msg } = ressult
-
       if (code === 200) {
         return ressult
       } else {

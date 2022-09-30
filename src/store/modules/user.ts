@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import { userType } from '../types'
+
+import { login } from '@/api/loign'
 export const useUserStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
   id: 'users',
@@ -18,14 +20,15 @@ export const useUserStore = defineStore({
   // 可以同步 也可以异步
   actions: {
     // 登录
-    login(userInfo:any) {
-      const { username } = userInfo
-      return new Promise(async(resolve) => {
-        this.token = username
-        this.userInfo = userInfo
-        await this.getRoles()
-        resolve(username)
-      })
+    async login(userInfo:any) {
+      await login(userInfo)
+      // const { username } = userInfo
+      // return new Promise(async(resolve) => {
+      //   this.token = username
+      //   this.userInfo = userInfo
+      //   await this.getRoles()
+      //   resolve(username)
+      // })
     },
     // 获取用户授权角色信息，实际应用中 可以通过token通过请求接口在这里获取用户信息
     getRoles() {
