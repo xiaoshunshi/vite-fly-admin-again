@@ -25,7 +25,7 @@ export default ({ mode }:any) => {
       viteMockServe({
         mockPath: 'mock', // 解析，路径可根据实际变动
         localEnabled: mode === 'development' ? isMock : false, // 开发环境
-        prodEnabled: false, // 生产环境设为true，也可以根据官方文档格式
+        prodEnabled: mode !== 'development', // 生产环境设为true，也可以根据官方文档格式
         injectCode:
         ` import { setupProdMockServer } from './src/mock';
           setupProdMockServer(); `,
