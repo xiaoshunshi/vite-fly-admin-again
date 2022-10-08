@@ -9,4 +9,10 @@ export function login(data?: object): requestType {
     data
   })
 }
-
+// 登录
+export function getUserPermission(): requestType {
+  return http.request({
+    method: 'post',
+    url: '/user/getUserPermission'
+  })
+}

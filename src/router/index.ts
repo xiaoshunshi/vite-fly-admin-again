@@ -6,8 +6,8 @@ import {
 import Layout from '@/layout/index.vue'
 
 // 扩展继承属性 hidden
-interface extendRoute{
-  hidden?: boolean
+export interface extendRoute{
+  hidden?: boolean,
 }
 
 export const constantRoutes :Array<RouteRecordRaw & extendRoute> = [
@@ -28,27 +28,11 @@ export const constantRoutes :Array<RouteRecordRaw & extendRoute> = [
         path: '/home',
         component: () => import('@/views/home/index.vue'),
         name: 'home',
-        meta: { title: '首页', icon: 'film', affix: true, role: ['other'] }
+        meta: { title: '首页', icon: 'film', affix: true }
       }
     ]
   }
 ]
-
-// const constantRoutes = [
-//   {
-//     path: '/',
-//     redirect: '/login'
-//   },
-//   {
-//     path: '/login',
-//     name: 'Login',
-//     component: () => import( '@/views/login/index.vue' ),
-//     meta: {
-//       hidden: true,
-//       title: '登录'
-//     }
-//   }
-// ]
 
 const router = createRouter({
   history: createWebHashHistory(),

@@ -13,6 +13,7 @@ type themeConfig = {
   mode:string
   showLogo:boolean
   globalComSize:string
+  uniqueOpened:boolean
 }
 export type settingType = {
   isCollapse:boolean

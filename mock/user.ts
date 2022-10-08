@@ -1,5 +1,4 @@
 import { MockMethod } from 'vite-plugin-mock'
-
 type mapType = {
   id: number;
   avatar: string;
@@ -48,7 +47,31 @@ const list = () => {
   return result
 }
 
+interface UserPermissionResultType {
+  path:string
+  name:string
+  component:string
+}
+
+const UserPermission = () => {
+  const UserPermissionResult: Array<UserPermissionResultType> = [
+    {
+      path: '/dictionary/pathConfig',
+      name: '路径配置',
+      component: '/dictionary/pathConfig/index.vue'
+    },
+    {
+      path: '/dictionary/permissionConfig',
+      name: '权限配置',
+      component: '/dictionary/permissionConfig/index.vue'
+    }
+  ]
+  return UserPermissionResult
+}
+
 export default [
+
+  // 登录
   {
     url: '/api/user/login',
     type: 'post',
@@ -62,7 +85,7 @@ export default [
       }
     }
   },
-
+  // 获取用户信息
   {
     url: '/api/getUserInfo',
     type: 'get',
@@ -74,7 +97,19 @@ export default [
       }
     }
   },
-
+  // 登录获取路由权限
+  {
+    url: '/api/user/getUserPermission',
+    type: 'get',
+    response: () => {
+      return {
+        code: 200,
+        message: 'success',
+        data: UserPermission()
+      }
+    }
+  },
+  // ceshi
   {
     url: '/api/test',
     type: 'get',
