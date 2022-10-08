@@ -51,6 +51,7 @@ interface UserPermissionResultType {
   path:string
   name:string
   component:string
+  meta:any
 }
 
 const UserPermission = () => {
@@ -58,12 +59,14 @@ const UserPermission = () => {
     {
       path: '/dictionary/pathConfig',
       name: '路径配置',
-      component: '/dictionary/pathConfig/index.vue'
+      component: '/dictionary/pathConfig/index.vue',
+      meta: { title: '路径配置', icon: 'film', affix: true }
     },
     {
       path: '/dictionary/permissionConfig',
       name: '权限配置',
-      component: '/dictionary/permissionConfig/index.vue'
+      component: '/dictionary/permissionConfig/index.vue',
+      meta: { title: '权限配置', icon: 'film', affix: true }
     }
   ]
   return UserPermissionResult

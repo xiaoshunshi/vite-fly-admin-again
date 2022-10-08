@@ -1,3 +1,5 @@
+import { RouteRecordRaw } from 'vue-router'
+
 export type userType = {
   token: string | null
   uid?: string
@@ -23,3 +25,11 @@ export type settingType = {
   themeConfig:themeConfig
 }
 
+export type permissionType = {
+  // 路由
+  routes: Array<RouteRecordRaw>,
+  // 动态路由
+  addRoutes: Array<RouteRecordRaw>,
+  // 缓存路由
+  cacheRoutes: any
+}

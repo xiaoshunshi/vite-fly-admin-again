@@ -28,7 +28,8 @@ router.beforeEach(async(to, from, next) => {
         if (!PermissionStore.routes.length) {
         // 如果为0，说明没有添加进去路由
           const accessRoutes = await PermissionStore.generateRoutes()
-          console.log(accessRoutes)
+          accessRoutes.forEach((item:any) => router.addRoute(item)) // 动态添加访问路由表
+          next({ ...to, replace: true })
         } else {
           next()
         }
