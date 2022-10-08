@@ -9,6 +9,7 @@ import * as ElIconsModules from '@element-plus/icons-vue'
 // svg-icons注册导入
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
+import './permission'
 
 const app = createApp(App)
 app.use(ElementPlus)
