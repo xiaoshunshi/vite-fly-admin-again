@@ -16,7 +16,7 @@ export const useSettingStore = defineStore({
       // 显示设置
       // showSetting: false,
       // // 菜单展示模式 默认 vertical   horizontal / vertical
-      // mode: 'vertical',
+      mode: 'vertical',
       // // tagsView 是否展示 默认展示
       // showTag: true,
       // // 页脚
@@ -24,7 +24,7 @@ export const useSettingStore = defineStore({
       // // 深色模式 切换暗黑模式
       // isDark: false,
       // // 显示侧边栏Logo
-      // showLogo: true,
+      showLogo: true,
       // // 主题颜色
       // primary: PRIMARY_COLOR,
       // element组件大小

@@ -10,6 +10,8 @@ export type userType = {
   userInfo:Object
 }
 type themeConfig = {
+  mode:string
+  showLogo:boolean
   globalComSize:string
 }
 export type settingType = {

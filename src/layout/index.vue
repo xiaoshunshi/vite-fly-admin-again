@@ -1,28 +1,37 @@
 <template>
   <div class="g-container-layout" :class="classObj">
-    layout
+    <div v-if="device === 'mobile' && !isCollapse" class="drawer-bg" @click="handleClickOutside" />
+    <sidebar class="sidebar-container" v-if="mode === 'vertical'" />
     <router-view />
   </div>
 </template>
 <script lang='ts' setup>
-// import { useResizeHandler } from './hooks/useResizeHandler'
+import { useResizeHandler } from './hooks/useResizeHandler'
 import { useSettingStore } from '@/store/modules/setting'
 import { computed } from 'vue'
+import Sidebar from './Sidebar/index.vue'
 
 const SettingStore = useSettingStore()
-// const { device } = useResizeHandler()
+const { device } = useResizeHandler()
 // 是否折叠
-// const isCollapse = computed(() => {
-//   return !SettingStore.isCollapse
-// })
+const isCollapse = computed(() => {
+  return !SettingStore.isCollapse
+})
 const classObj = computed(() => {
   return {
     hideSidebar: !SettingStore.isCollapse,
     openSidebar: SettingStore.isCollapse,
-    withoutAnimation: SettingStore.withoutAnimation
-    // mobile: device.value === 'mobile'
+    withoutAnimation: SettingStore.withoutAnimation,
+    mobile: device.value === 'mobile'
   }
 })
+// 移动端点击
+const handleClickOutside = () => {
+  SettingStore.closeSideBar({ withoutAnimation: false })
+}
+// const showTag = computed(() => SettingStore.themeConfig.showTag)
+
+const mode = computed(() => SettingStore.themeConfig.mode)
 
 </script>
 <style lang='scss' scoped>
