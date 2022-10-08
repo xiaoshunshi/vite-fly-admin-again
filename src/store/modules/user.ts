@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { userType } from '../types'
 
 import { login } from '@/api/loign'
+
+import cookies from '@/utils/cookies'
 export const useUserStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
   id: 'users',
@@ -33,7 +35,7 @@ export const useUserStore = defineStore({
       // })
     },
     setToken(token:string) {
-      console.log(token)
+      cookies.set('token', token)
     },
     // 获取用户授权角色信息，实际应用中 可以通过token通过请求接口在这里获取用户信息
     getRoles() {
