@@ -1,3 +1,4 @@
+import { RouteRecordRaw } from 'vue-router'
 import router from './router'
 import NProgress from '@/utils/progress'
 import cookies from '@/utils/cookies'
@@ -26,10 +27,11 @@ router.beforeEach(async(to, from, next) => {
       try {
         const PermissionStore = usePermissionStore()
         if (!PermissionStore.routes.length) {
-        // 如果为0，说明没有添加进去路由
-          const accessRoutes = await PermissionStore.generateRoutes()
-          accessRoutes.forEach((item:any) => router.addRoute(item)) // 动态添加访问路由表
+          // 如果为0，说明没有添加进去路由
+          const accessRoutes = (await PermissionStore.generateRoutes()) as Array<RouteRecordRaw>
+          accessRoutes.forEach((item: any) => router.addRoute(item)) // 动态添加访问路由表
           next({ ...to, replace: true })
+          NProgress.done()
         } else {
           next()
         }

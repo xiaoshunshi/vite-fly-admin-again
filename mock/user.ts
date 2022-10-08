@@ -48,26 +48,39 @@ const list = () => {
 }
 
 interface UserPermissionResultType {
-  path:string
-  name:string
-  component:string
-  meta:any
+  path: string
+  name: string
+  component?: string
+  meta: any
+  redirect?: string
+  children?: Array<UserPermissionResultType>
 }
 
 const UserPermission = () => {
   const UserPermissionResult: Array<UserPermissionResultType> = [
+
     {
-      path: '/dictionary/pathConfig',
-      name: '路径配置',
-      component: '/dictionary/pathConfig/index.vue',
-      meta: { title: '路径配置', icon: 'film', affix: true }
-    },
-    {
-      path: '/dictionary/permissionConfig',
-      name: '权限配置',
-      component: '/dictionary/permissionConfig/index.vue',
-      meta: { title: '权限配置', icon: 'film', affix: true }
+      path: '/dictionary',
+      name: '基础配置',
+      redirect: '/dictionary/pathConfig',
+      component: 'Layout',
+      meta: { title: '基础配置', icon: 'film', affix: true },
+      children: [
+        {
+          path: '/dictionary/pathConfig',
+          name: '路径配置',
+          component: '/dictionary/pathConfig/index.vue',
+          meta: { title: '路径配置', icon: 'film', affix: true }
+        },
+        {
+          path: '/dictionary/permissionConfig',
+          name: '权限配置',
+          component: '/dictionary/permissionConfig/index.vue',
+          meta: { title: '权限配置', icon: 'film', affix: true }
+        }
+      ]
     }
+
   ]
   return UserPermissionResult
 }
