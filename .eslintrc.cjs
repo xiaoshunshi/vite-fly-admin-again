@@ -32,6 +32,7 @@ module.exports = {
     //     ignores: ['index'] // 需要忽略的组件名
     //   }
     // ],
+    'vue/no-template-shadow': 'off',
     'vue/multi-word-component-names': 'off',
     // vue的属性超过3个就换行显示
     'vue/max-attributes-per-line': [
