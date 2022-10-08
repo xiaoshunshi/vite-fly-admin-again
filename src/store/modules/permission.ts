@@ -7,7 +7,6 @@ import { RouteRecordRaw } from 'vue-router'
 
 // 匹配所有的vue文件
 const modules = import.meta.glob('./../../views/**/*.vue')
-console.log(modules)
 
 export const usePermissionStore = defineStore({
   id: 'permissionState',

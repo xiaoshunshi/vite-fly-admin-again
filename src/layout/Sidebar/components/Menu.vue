@@ -28,8 +28,6 @@ import { useSettingStore } from '@/store/modules/setting'
 const SettingStore = useSettingStore()
 const PermissionStore = usePermissionStore()
 const permission_routes = computed(() => PermissionStore.permission_routes)
-console.log(permission_routes)
-
 // 在setup中获取store
 const route = useRoute()
 const activeMenu = computed(() => {

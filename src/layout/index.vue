@@ -2,7 +2,22 @@
   <div class="g-container-layout" :class="classObj">
     <div v-if="device === 'mobile' && !isCollapse" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" v-if="mode === 'vertical'" />
-    <router-view />
+
+    <div
+      class="main-container"
+      :class="{
+        hideSliderLayout: mode === 'horizontal',
+      }"
+    >
+      <div
+        :style="{ height: `${showTag ? 80 : 50}px` }"
+        v-if="SettingStore.themeConfig.fixedHeader"
+      />
+      <u-header />
+      <router-view />
+
+    </div>
+
   </div>
 </template>
 <script lang='ts' setup>
@@ -10,6 +25,7 @@ import { useResizeHandler } from './hooks/useResizeHandler'
 import { useSettingStore } from '@/store/modules/setting'
 import { computed } from 'vue'
 import Sidebar from './Sidebar/index.vue'
+import UHeader from './Header/index.vue'
 
 const SettingStore = useSettingStore()
 const { device } = useResizeHandler()
@@ -29,7 +45,7 @@ const classObj = computed(() => {
 const handleClickOutside = () => {
   SettingStore.closeSideBar({ withoutAnimation: false })
 }
-// const showTag = computed(() => SettingStore.themeConfig.showTag)
+const showTag = computed(() => SettingStore.themeConfig.showTag)
 
 const mode = computed(() => SettingStore.themeConfig.mode)
 

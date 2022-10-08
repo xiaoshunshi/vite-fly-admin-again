@@ -18,7 +18,7 @@ export const useSettingStore = defineStore({
       // // 菜单展示模式 默认 vertical   horizontal / vertical
       mode: 'vertical',
       // // tagsView 是否展示 默认展示
-      // showTag: true,
+      showTag: true,
       // // 页脚
       // footer: true,
       // // 深色模式 切换暗黑模式
@@ -30,9 +30,9 @@ export const useSettingStore = defineStore({
       // element组件大小
       globalComSize: 'default',
       // 是否只保持一个子菜单的展开
-      uniqueOpened: true
+      uniqueOpened: true,
       // // 固定header
-      // fixedHeader: true,
+      fixedHeader: true
       // // 灰色模式
       // gray: false,
       // // 色弱模式

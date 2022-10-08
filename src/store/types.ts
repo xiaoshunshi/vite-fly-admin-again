@@ -13,9 +13,11 @@ export type userType = {
 }
 type themeConfig = {
   mode:string
+  showTag:boolean
   showLogo:boolean
   globalComSize:string
   uniqueOpened:boolean
+  fixedHeader:boolean
 }
 export type settingType = {
   isCollapse:boolean
