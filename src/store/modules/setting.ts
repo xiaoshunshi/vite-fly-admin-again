@@ -6,8 +6,12 @@ export const useSettingStore = defineStore({
   // state: 返回对象的函数
   state: ():settingType => ({
     // menu 是否收缩
+    isCollapse: true,
+    //
+    withoutAnimation: false,
+    device: 'desktop',
     // 刷新当前页
-    // 主题设置
+    isReload: true,
     themeConfig: {
       // 显示设置
       // showSetting: false,
@@ -41,26 +45,26 @@ export const useSettingStore = defineStore({
     // 设置主题
     setThemeConfig({ key, val }: { key:any ; val: string }) {
       this.themeConfig[key] = val
-    }
+    },
     // 切换 Collapse
-    // setCollapse(value:any) {
-    //   this.isCollapse = value
-    //   this.withoutAnimation = false
-    // },
-    // // 关闭侧边栏
-    // closeSideBar({ withoutAnimation }:{withoutAnimation:any}) {
-    //   this.isCollapse = false
-    //   this.withoutAnimation = withoutAnimation
-    // },
-    // toggleDevice(device:any) {
-    //   this.device = device
-    // },
+    setCollapse(value:any) {
+      this.isCollapse = value
+      this.withoutAnimation = false
+    },
+    // 关闭侧边栏
+    closeSideBar({ withoutAnimation }:{withoutAnimation:any}) {
+      this.isCollapse = false
+      this.withoutAnimation = withoutAnimation
+    },
+    toggleDevice(device:any) {
+      this.device = device
+    },
     // 刷新
-    // setReload() {
-    //   this.isReload = false
-    //   setTimeout(() => {
-    //     this.isReload = true
-    //   }, 50)
-    // }
+    setReload() {
+      this.isReload = false
+      setTimeout(() => {
+        this.isReload = true
+      }, 50)
+    }
   }
 })

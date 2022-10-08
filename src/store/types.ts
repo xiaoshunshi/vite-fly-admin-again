@@ -13,6 +13,10 @@ type themeConfig = {
   globalComSize:string
 }
 export type settingType = {
+  isCollapse:boolean
+  withoutAnimation:boolean
+  device:string
+  isReload:boolean
   themeConfig:themeConfig
 }
 
