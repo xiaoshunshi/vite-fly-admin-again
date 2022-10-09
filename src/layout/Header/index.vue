@@ -24,7 +24,11 @@
         </div>
         <u-hamburger />
       </div>
-      heaser
+      <div class="right">
+        <u-header-search class="right-item-menu" />
+        heaser
+      </div>
+
     </div>
   </div>
 </template>
@@ -34,6 +38,8 @@ import { useSettingStore } from '@/store/modules/setting'
 import { computed } from 'vue'
 import UMenu from '../Sidebar/components/Menu.vue'
 import UHamburger from '@/components/u-Hamburger/index.vue'
+// 头部搜索组件
+import UHeaderSearch from '@/components/u-headerSearch/index.vue'
 
 const SettingStore = useSettingStore()
 const isCollapse = computed(() => !SettingStore.isCollapse)
