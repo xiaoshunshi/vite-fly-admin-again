@@ -34,7 +34,7 @@
 
         <el-dropdown @command="commandAction">
           <span class="el-dropdown-link">
-            <el-avatar :icon="UserFilled" :size="30" style="margin-right: 6px" />{{
+            <el-avatar :src="userInfo.avatar" :size="30" style="margin-right: 6px" />{{
               userInfo.username
             }}
             <el-icon class="el-icon--right">
@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { UserFilled } from '@element-plus/icons-vue'
+// import { UserFilled } from '@element-plus/icons-vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { useSettingStore } from '@/store/modules/setting'
 import { computed, ref } from 'vue'
