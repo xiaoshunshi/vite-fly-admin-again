@@ -26,6 +26,8 @@
       </div>
       <div class="right">
         <u-header-search class="right-item-menu" />
+        <u-screen-full class="right-item-menu" />
+
         heaser
       </div>
 
@@ -40,6 +42,8 @@ import UMenu from '../Sidebar/components/Menu.vue'
 import UHamburger from '@/components/u-Hamburger/index.vue'
 // 头部搜索组件
 import UHeaderSearch from '@/components/u-headerSearch/index.vue'
+// 全屏组件
+import UScreenFull from '@/components/u-screenfull/index.vue'
 
 const SettingStore = useSettingStore()
 const isCollapse = computed(() => !SettingStore.isCollapse)
