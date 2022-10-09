@@ -118,7 +118,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
       })
       ElNotification({
         title: getTimeState(),
-        message: '欢迎登录 Vue Admin Perfect',
+        message: '欢迎登录 Vite Fly Admin',
         type: 'success',
         duration: 3000
       })
