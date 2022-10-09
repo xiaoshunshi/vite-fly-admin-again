@@ -1,11 +1,12 @@
 import Layout from '@/layout/index.vue'
 import { permissionType } from './../types'
 import { defineStore } from 'pinia'
-import { getUserPermission } from '@/api/loign'
+import { getUserPermission, getUserInfo } from '@/api/loign'
 import { constantRoutes } from '@/router'
 import { RouteRecordRaw } from 'vue-router'
-
+import { useUserStore } from './user'
 // 匹配所有的vue文件
+
 const modules = import.meta.glob('./../../views/**/*.vue')
 
 export const usePermissionStore = defineStore({
@@ -27,6 +28,9 @@ export const usePermissionStore = defineStore({
     // 生成完整的路由表
     generateRoutes() {
       return new Promise(async resolve => {
+        const useInfo = await getUserInfo()
+        const UserStore = useUserStore()
+        await UserStore.setInfo(useInfo.data)
         const result = await getUserPermission()
         const accessedRoutes: Array<RouteRecordRaw> = this.changeComponent(result.data)
         this.routes = constantRoutes.concat(accessedRoutes as Array<RouteRecordRaw>)
@@ -65,6 +69,12 @@ export const usePermissionStore = defineStore({
         }
       }
       return res
+    },
+    // 清空路由
+    clearRoutes() {
+      this.routes = []
+      this.addRoutes = []
+      this.cacheRoutes = []
     }
 
   }

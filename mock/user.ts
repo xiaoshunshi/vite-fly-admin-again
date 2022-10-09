@@ -1,21 +1,21 @@
 import { MockMethod } from 'vite-plugin-mock'
-type mapType = {
+type userInfoType = {
   id: number;
   avatar: string;
-  name: string;
+  username: string;
   phone: string;
   email: string;
   identity: string;
   roles: string[];
 }
 
-const userInfo = (): mapType => {
-  const result: mapType = {
+const userInfo = (): userInfoType => {
+  const result: userInfoType = {
     id: 9527,
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: '灰是小灰灰的灰',
-    phone: '15988888888',
-    email: '454539387@qq.com',
+    username: '小顺石',
+    phone: '13697636431',
+    email: '451539737@qq.com',
     identity: '',
     roles: ['admin']
   }
@@ -103,7 +103,7 @@ export default [
   },
   // 获取用户信息
   {
-    url: '/api/getUserInfo',
+    url: '/api/user/getUserInfo',
     type: 'get',
     response: () => {
       return {
@@ -139,7 +139,7 @@ export default [
   },
 
   {
-    url: '/api/logout',
+    url: '/api/user/logout',
     method: 'get',
     response: () => {
       return {

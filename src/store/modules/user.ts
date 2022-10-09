@@ -25,7 +25,9 @@ export const useUserStore = defineStore({
     async login(userInfo:any) {
       const { data } = await login(userInfo)
       const { token } = data
+
       this.setToken(token)
+
       // const { username } = userInfo
       // return new Promise(async(resolve) => {
       //   this.token = username
@@ -46,15 +48,16 @@ export const useUserStore = defineStore({
       })
     },
     // 获取用户信息 ，如实际应用中 可以通过token通过请求接口在这里获取用户信息
-    getInfo(roles:any) {
+    setInfo(userInfo:any) {
       return new Promise((resolve) => {
-        this.roles = roles
-        resolve(roles)
+        this.userInfo = userInfo
+        resolve(userInfo)
       })
     },
     // 退出
     logout() {
       return new Promise((resolve) => {
+        cookies.clearAll()
         this.token = null
         this.userInfo = {}
         this.roles = []

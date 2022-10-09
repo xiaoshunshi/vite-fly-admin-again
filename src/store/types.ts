@@ -1,5 +1,13 @@
 import { RouteRecordRaw } from 'vue-router'
-
+export type userInfoType = {
+  id: number;
+  avatar: string;
+  username: string;
+  phone: string;
+  email: string;
+  identity: string;
+  roles: string[];
+}
 export type userType = {
   token: string | null
   uid?: string
@@ -9,7 +17,7 @@ export type userType = {
   email?: string
   identity?: string
   roles?: string[],
-  userInfo:Object
+  userInfo:userInfoType | Object
 }
 type themeConfig = {
   mode:string
