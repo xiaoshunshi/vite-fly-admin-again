@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, ConfigEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import eslintPlugin from 'vite-plugin-eslint'
@@ -9,25 +9,29 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { isMock } from './mock/config'
 // 打包分析
 import { visualizer } from 'rollup-plugin-visualizer'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 const resolve = (dir: string) => path.join(__dirname, dir)
 // https://vitejs.dev/config/
-export default ({ mode }:any) => {
-  // console.log(mode, 'mode') // development
+export default ({ mode }: ConfigEnv) => {
+  console.log(mode, 'mode') // development
   // console.log(loadEnv(mode, process.cwd()), 'cwd')
   return defineConfig({
+    base: './',
     plugins: [
       vue(),
+      DefineOptions(),
       visualizer({
         open: true, // 注意这里要设置为true，否则无效
         gzipSize: true,
         brotliSize: true
       }),
       viteMockServe({
-        mockPath: 'mock', // 解析，路径可根据实际变动
+        mockPath: './mock/', // 解析，路径可根据实际变动
         localEnabled: mode === 'development' ? isMock : false, // 开发环境
+        // localEnabled: mode === 'development',
         prodEnabled: mode !== 'development', // 生产环境设为true，也可以根据官方文档格式
         injectCode:
-        ` import { setupProdMockServer } from './src/mock';
+          ` import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer(); `,
         watchFiles: true, // 监听文件内容变更
         injectFile: resolve('src/main.ts')

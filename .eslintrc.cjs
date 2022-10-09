@@ -4,6 +4,12 @@ module.exports = {
     es2021: true,
     node: true
   },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly'
+  },
   extends: [
     // 'plugin:vue/essential',
     // 使用 vue3 规则

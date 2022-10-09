@@ -1,64 +1,61 @@
 <template>
-  <div class="m-screenful">
-    <svg-icon
-      :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
-      @click="click"
-      class="full-screen"
-    />
+  <div class="screen-full">
+    <svg-icon class-name="icons" :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'" @click="click" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import screenfull from './index'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-
+import screenfull from 'screenfull'
 const isFullscreen = ref(false)
+
+onMounted(() => {
+  init()
+})
+
+onUnmounted(() => {
+  destory()
+})
+
 const click = () => {
   if (!screenfull.isEnabled) {
     ElMessage({
-      message: '你的浏览器不支持',
+      message: '你的浏览器不支持全屏',
       type: 'warning'
     })
     return false
   }
   screenfull.toggle()
 }
-const change = () => {
-  isFullscreen.value = screenfull.isFullscreen
-}
 const init = () => {
   if (screenfull.isEnabled) {
     screenfull.on('change', change)
   }
 }
-
-const destroy = () => {
+const destory = () => {
   if (screenfull.isEnabled) {
     screenfull.off('change', change)
   }
 }
-onMounted(() => {
-  init()
-})
+const change = () => {
+  isFullscreen.value = screenfull.isFullscreen
+}
 
-onBeforeUnmount(() => {
-  destroy()
-})
+// defineOptions({
+//   name: 'Screenfull'
+// })
 </script>
 
-<style lang="scss" scoped>
-  .m-screenful {
-    display: flex;
-    align-items: center;
-    padding-right: 0;
-    justify-content: center;
+<style scoped lang="scss">
+.screen-full {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  &:hover {
     cursor: pointer;
-    transition: all 0.3s;
+    background: #f0f0f0;
   }
-  .transverseMenu {
-    .full-screen {
-      color: white;
-    }
-  }
+}
 </style>
