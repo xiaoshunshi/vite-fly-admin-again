@@ -9,16 +9,40 @@
           ? 'fixed-header-collapse'
           : 'fixed-header-no-collapse',
     ]"
-  >heaser</div>
+  >
+    <div
+      class="header"
+      :class="{
+        transverseMenu: mode === 'horizontal',
+      }"
+    >
+      <u-menu v-if="mode === 'horizontal'" />
+      <div class="left" v-if="mode === 'vertical'">
+        <div class="hamburger-container">
+          <el-icon class="icon" v-if="isCollapse" @click="handleCollapse"><expand /></el-icon>
+          <el-icon class="icon" v-else @click="handleCollapse"><fold /></el-icon>
+        </div>
+        <u-hamburger />
+      </div>
+      heaser
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { useSettingStore } from '@/store/modules/setting'
 import { computed } from 'vue'
+import UMenu from '../Sidebar/components/Menu.vue'
+import UHamburger from '@/components/u-Hamburger/index.vue'
+
 const SettingStore = useSettingStore()
 const isCollapse = computed(() => !SettingStore.isCollapse)
 // menu 布局
 const mode = computed(() => SettingStore.themeConfig.mode)
+// 切换显示
+const handleCollapse = () => {
+  SettingStore.setCollapse(isCollapse.value)
+}
 </script>
 <style lang="scss" scoped>
   .mobile {
