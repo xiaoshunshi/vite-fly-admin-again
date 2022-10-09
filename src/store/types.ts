@@ -43,3 +43,9 @@ export type permissionType = {
   // 缓存路由
   cacheRoutes: any
 }
+
+export type tagsViewType = {
+  visitedViews:Array<RouteRecordRaw>,
+  cachedViews:Array<string>
+}
+

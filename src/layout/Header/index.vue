@@ -59,6 +59,9 @@
       </div>
 
     </div>
+    <!-- 下方tag导航 -->
+    <tag-views v-if="showTag" />
+
   </div>
 </template>
 
@@ -76,12 +79,15 @@ import UHeaderSearch from '@/components/u-headerSearch/index.vue'
 import UScreenFull from '@/components/u-screenfull/index.vue'
 import { useUserStore } from '@/store/modules/user'
 import { usePermissionStore } from '@/store/modules/permission'
+import TagViews from '../TagsView/index.vue'
 
 const SettingStore = useSettingStore()
 const isCollapse = computed(() => !SettingStore.isCollapse)
 // menu 布局
 const mode = computed(() => SettingStore.themeConfig.mode)
 // 切换显示
+// 显示 tag
+const showTag = computed(() => SettingStore.themeConfig.showTag)
 const handleCollapse = () => {
   SettingStore.setCollapse(isCollapse.value)
 }
